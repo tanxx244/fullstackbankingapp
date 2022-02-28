@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var cors = require('cors');
-// const functions = require("firebase-functions");
+const functions = require("firebase-functions");
 const admin = require('./admin.js')
 
 // used to serve static files from public directory
@@ -27,6 +27,8 @@ app.get('/auth', function(req,res){
         });
 })
 
-app.listen(3000, () => {
-    console.log('Running on port: 3000');
-})
+// app.listen(3000, () => {
+//     console.log('Running on port: 3000');
+// })
+
+exports.widgets = functions.https.onRequest(app);
